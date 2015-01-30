@@ -1,63 +1,82 @@
-# proyecto05
-#include<stdio>
+# proyecto
+ #include<stdio>
 #include<conio>
 #include<stdlib>
 #include<string>
+#include<fstream>
 
-main()
+int menu()
 {
- int a, b,op, base1, numero, v[20], p  ;
- do
- {
-        printf("         Menu : \n ");
-    printf("   EJERCICIOS : \n ");
+int op;
+
+printf("         Menu : \n ");
+    printf("     EJERCICIOS : \n ");
     printf("1.  Generar tablas de verdad con dos entradas \n ");
     printf("2.  Ver tablas de verdad con dos entradas \n ");
     printf("3.  Generar y ver tablas de verdadcon n entradas \n ");
     printf("4. Salir \n ");
 
-     printf("Elija una opcion:\n ");
      scanf("%d",& op);
+return op;
+}
 
-        if (op >=1 & op <=3)
-        {
+//Creamos el archivo en funcion
 
-
-    printf(" Ingrese el valor a trasformar");
-    scanf("%d",& numero);
-    printf(" \n ");
-
-      }
-
-     switch (op)
+bool existe()
      {
-     case 1:
+FILE *documento;
+documento= fopen("C:/BC5/ARCHIVO/TABLAS.txt","rb");
+if(documento!=NULL)
+ {
+  fclose(documento);
+  return 1;
+ }
+else
+ {
+ fclose(documento);
+ return 0;
+ }
+}
 
-       printf("  Generar tablas de verdad con dos entradas \n ");
+
+
+
+ void ejecutar(int op)
+  {
+   switch(op)
+    {
+      case 1:
+      printf("  Generar tablas de verdad con dos entradas \n ");
       break;
 
      case 2:
      printf("  Ver tablas de verdad con dos entradas \n ");
-
      break;
 
-      case 3:
+     case 3:
      printf("  Generar y ver tablas de verdadcon n entradas \n ");
-
      break;
 
-       case 4:
-      printf(" Gracias :) ");
-      break;
-
-     default:
-     printf("Opcion no valida \n ");
+     case 4:
+     printf(" Gracias :) ");
      break;
+    }
+  }
+
+
+
+
+void main()
+{
+   int opc=0;
+   while (opc!=4)
+     {
+		opc=menu();
+		ejecutar(opc);
      }
-     } while(op >=1 & op <4);
 
-getch();
 }
+
 
 
 trabajo final
